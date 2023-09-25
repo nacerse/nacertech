@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NacYossPro - Upload CSV</title>
+    <style>
+        body.dark-mode {
+            background-color: black;
+            color: white;
+        }
+        body.light-mode {
+            background-color: white;
+            color: black;
+        }
+        body {
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        #upload-btn {
+            background-color: #ff7200;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #upload-btn:hover {
+            background-color: #ff8c2e;
+        }
+
+        /* Dark mode and Light mode switch */
+        .mode-switch {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .mode-switch label {
+            margin-right: 10px;
+        }
+
+        .mode-switch input[type="checkbox"] {
+            display: none;
+        }
+
+        .mode-switch .slider {
+            position: relative;
+            width: 30px;
+            height: 15px;
+            background-color: #ccc;
+            border-radius: 15px;
+        }
+
+        .mode-switch .slider:before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #007bff;
+            border-radius: 50%;
+            transform: translateX(2px);
+            transition: 0.4s;
+        }
+
+        .mode-switch input:checked + .slider {
+            background-color: #007bff;
+        }
+
+        .mode-switch input:checked + .slider:before {
+            transform: translateX(16px);
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <h1>Welcome to <span style="color: #ff7200;">NacYossPro</span></h1>
+    <p>Upload your CSV file below:</p>
+    
+    <!-- File input and upload button -->
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="csv_file" id="csv_file" accept=".csv" style="display: none;">
+        <label for="csv_file" id="upload-btn">Upload CSV</label>
+    </form>
+
+    <!-- Dark mode and Light mode switch -->
+    <div class="mode-switch">
+        <label for="mode-toggle">Dark Mode</label>
+        <input type="checkbox" id="mode-toggle" onclick="toggleDarkLightMode()">
+        <label for="mode-toggle" class="slider"></label>
+        <label for="mode-toggle">Light Mode</label>
+    </div>
+
+    <script>
+        // JavaScript function to toggle dark mode and light mode
+        function toggleDarkLightMode() {
+            const body = document.body;
+            const modeToggle = document.getElementById("mode-toggle");
+
+            if (modeToggle.checked) {
+                body.classList.remove("light-mode");
+                body.classList.add("dark-mode");
+            } else {
+                body.classList.remove("dark-mode");
+                body.classList.add("light-mode");
+            }
+        }
+    </script>
+</body>
+</html>
+
